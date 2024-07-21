@@ -1,5 +1,21 @@
-# FruitStoreApp
- SwiftUI-based Fruit Store App - Select, view details, and purchase your favorite fruits. Features a dynamic UI, profile management, and a seamless add-to-cart functionality with multiple payment methods.
+FruitStoreApp
+🍎🍌🍒 SwiftUI-based Fruit Store App - Select, view details, and purchase your favorite fruits. Features a dynamic UI, profile management, and a seamless add-to-cart functionality with multiple payment methods.
+
+Project Overview
+This repository contains the code for a SwiftUI-based Fruit Store app. The app allows users to select and view details about various fruits, update their profile, and add items to a cart with different payment methods.
+
+Features
+Home Screen
+Fruit selection with quantity and pricing details
+Search functionality
+Dynamic UI with gradient backgrounds and shadows
+Detail View
+Detailed view of selected fruits with benefits
+Profile View
+Update profile picture and name
+Cart View
+Add to cart functionality
+Select payment method from various card options
 import SwiftUI
 
 struct ContenntView: View {
