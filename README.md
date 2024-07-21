@@ -1,21 +1,30 @@
-FruitStoreApp
-🍎🍌🍒 SwiftUI-based Fruit Store App - Select, view details, and purchase your favorite fruits. Features a dynamic UI, profile management, and a seamless add-to-cart functionality with multiple payment methods.
+# 🍎🍌🍒 FruitStoreApp
 
-Project Overview
+SwiftUI-based Fruit Store App - Select, view details, and purchase your favorite fruits. Features a dynamic UI, profile management, and a seamless add-to-cart functionality with multiple payment methods.
+
+## Project Overview
 This repository contains the code for a SwiftUI-based Fruit Store app. The app allows users to select and view details about various fruits, update their profile, and add items to a cart with different payment methods.
 
-Features
-Home Screen
-Fruit selection with quantity and pricing details
-Search functionality
-Dynamic UI with gradient backgrounds and shadows
-Detail View
-Detailed view of selected fruits with benefits
-Profile View
-Update profile picture and name
-Cart View
-Add to cart functionality
-Select payment method from various card options
+## Features
+
+### Home Screen
+- Fruit selection with quantity and pricing details
+- Search functionality
+- Dynamic UI with gradient backgrounds and shadows
+
+### Detail View
+- Detailed view of selected fruits with benefits
+
+### Profile View
+- Update profile picture and name
+
+### Cart View
+- Add to cart functionality
+- Select payment method from various card options
+
+## Code
+
+```swift
 import SwiftUI
 
 struct ContenntView: View {
@@ -41,7 +50,6 @@ struct ContenntView: View {
     }
 }
 
-
 struct HomeView: View {
     @State private var selectedFruitIndex = 0
     @State private var fruitCounts = [0, 0, 0]
@@ -50,10 +58,9 @@ struct HomeView: View {
     @State private var searchText = ""
     @Binding var profileImage: Image?
     @State private var navigateToProfile = false
-    @State private var showAddToCart = false // New state variable
-        @State private var navigateToCart = false
-    
-    
+    @State private var showAddToCart = false
+    @State private var navigateToCart = false
+
     let fruits = [
         Fruit(name: "Apple", price: 1.0, imageName: "aaple", benefits: "Apples are nutritious, may be good for weight loss and heart health."),
         Fruit(name: "Banana", price: 0.5, imageName: "bbnana", benefits: "Bananas are rich in potassium, help in digestion, and provide instant energy."),
@@ -111,7 +118,6 @@ struct HomeView: View {
                                     .clipShape(Circle())
                                     .shadow(radius: 10)
                                 
-                                
                                 VStack(alignment: .leading, spacing: 10) {
                                     Text("Quantity: \(fruitCounts[selectedFruitIndex])")
                                         .font(.title)
@@ -136,11 +142,11 @@ struct HomeView: View {
                             showAddToCart = true
                         }
                     })
-                        .padding()
-                        .background(LinearGradient(gradient: Gradient(colors: [Color.orange.opacity(0.8), Color.red.opacity(0.8)]), startPoint: .topLeading, endPoint: .bottomTrailing))
-                        .cornerRadius(15)
-                        .padding(.horizontal)
-                        .shadow(color: .black.opacity(0.2), radius: 5, x: 0, y: 5)
+                    .padding()
+                    .background(LinearGradient(gradient: Gradient(colors: [Color.orange.opacity(0.8), Color.red.opacity(0.8)]), startPoint: .topLeading, endPoint: .bottomTrailing))
+                    .cornerRadius(15)
+                    .padding(.horizontal)
+                    .shadow(color: .black.opacity(0.2), radius: 5, x: 0, y: 5)
                     
                     VStack(spacing: 10) {
                         Text("Total Quantity: \(totalQuantity)")
@@ -150,21 +156,22 @@ struct HomeView: View {
                         Text("Total Price: $\(totalPrice, specifier: "%.2f")")
                             .font(.title)
                             .foregroundColor(.white)
-                        if showAddToCart { // Show button if showAddToCart is true
-                                                   NavigationLink(destination: CartView(), isActive: $navigateToCart) {
-                                                       Button(action: {
-                                                           self.navigateToCart = true
-                                                       }) {
-                                                           Text("Add to Cart")
-                                                               .foregroundColor(.white)
-                                                               .padding(.horizontal)
-                                                               .padding(.vertical, 8)
-                                                               .background(Color.green)
-                                                               .cornerRadius(10)
-                                                               .shadow(color: .green.opacity(0.7), radius: 3, x: 0, y: 3)
-                                                       }
-                                                   }
-                                               }
+                        
+                        if showAddToCart {
+                            NavigationLink(destination: CartView(), isActive: $navigateToCart) {
+                                Button(action: {
+                                    self.navigateToCart = true
+                                }) {
+                                    Text("Add to Cart")
+                                        .foregroundColor(.white)
+                                        .padding(.horizontal)
+                                        .padding(.vertical, 8)
+                                        .background(Color.green)
+                                        .cornerRadius(10)
+                                        .shadow(color: .green.opacity(0.7), radius: 3, x: 0, y: 3)
+                                }
+                            }
+                        }
                     }
                     .padding()
                     .background(BlurView(style: .systemMaterialDark))
@@ -184,6 +191,7 @@ struct HomeView: View {
                                     .frame(width: 100, height: 150)
                                     .clipShape(Circle())
                                     .shadow(radius: 10)
+                                
                                 VStack(alignment: .leading) {
                                     Text("\(filteredFruits[index].name)")
                                         .font(.title)
@@ -202,7 +210,6 @@ struct HomeView: View {
                     LinearGradient(gradient: Gradient(colors: [Color.blue.opacity(0.5), Color.purple.opacity(0.5)]), startPoint: .top, endPoint: .bottom)
                         .edgesIgnoringSafeArea(.all)
                 )
-                
                 .navigationTitle("Fruits Store")
                 .frame(alignment: .center)
                 .sheet(isPresented: $showDetailView) {
@@ -270,8 +277,6 @@ struct DetailFruitView: View {
             Text(fruit.benefits)
                 .font(.body)
                 .padding()
-            
-            // Spacer()
         }
         .edgesIgnoringSafeArea(.all)
         .background(
@@ -364,7 +369,6 @@ struct FruitDetailView: View {
             Text(fruit.benefits)
                 .font(.body)
                 .padding()
-            
         }
         .edgesIgnoringSafeArea(.all)
         .background(
@@ -382,7 +386,6 @@ struct FruitDetail: Identifiable {
     var benefits: String
 }
 
-
 import SwiftUI
 
 struct ProfileView: View {
@@ -394,7 +397,6 @@ struct ProfileView: View {
     var body: some View {
         NavigationView {
             VStack(spacing: 20) {
-                
                 profileImage?
                     .resizable()
                     .scaledToFill()
@@ -465,7 +467,6 @@ struct ImagePicker: UIViewControllerRepresentable {
     
     func updateUIViewController(_ uiViewController: UIImagePickerController, context: UIViewControllerRepresentableContext<ImagePicker>) {}
 }
-
 
 struct CartView: View {
     @State private var selectedCard: String? = nil
@@ -552,7 +553,6 @@ struct RadioButtonField: View {
         .foregroundColor(.primary)
     }
 }
-
 
 struct ContenntView_Previews: PreviewProvider {
     static var previews: some View {
